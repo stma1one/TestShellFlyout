@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TestShellFlyout.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TestShellFlyout"  FlowDirection="LeftToRight" >
+
+    <!--
+    FLYOUT ITEMS : MAIN PAGE this has 2 buttons to signup and Login this should disappear after login when loading the Home Page
+    Another FLYOUT contains tabs for Home Page and another page. ->>> this Pages are Hdden (by the FlyoutItemIsVisible flag.
+    
+    *See Appshell.cs for Registration of the routing to LOGIN and SIGNUP Pages*
+    *See MAUIPROGRAM.cs -> AddSingelton all Pages and ViewModels.*
+    *See HomePage.Xaml.cs for Logic Hiding FlyoutItems when the HomePage Loads*
+    *see ViewModels  for the buttons logic.*
+    
+    
+    -->
+   
+    <FlyoutItem Title="Main Page">     
+    <ShellContent
+        Title="Main Screen"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" FlyoutItemIsVisible="False">
+
+        <ShellContent
+            Title="Next Page" 
+            ContentTemplate="{DataTemplate local:NextPage}"
+            Route="Page2">
+        </ShellContent>
+        
+        <ShellContent  
+            Title="Home" 
+     ContentTemplate="{DataTemplate local:Home}"
+     Route="Home" />
+    </FlyoutItem>
+
+
+
+</Shell>
